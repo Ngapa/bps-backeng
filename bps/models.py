@@ -1,53 +1,52 @@
-from secrets import choice
-from signal import default_int_handler
 from django.db import models
 # Create your models here.
 
 
 class PdrbMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Produk Domestik Regional Bruto Dengan Migas"
@@ -56,48 +55,49 @@ class PdrbMigas(models.Model):
 
 class DistribusiPdrbMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Distribusi Produk Domestik Regional Bruto Dengan Migas"
@@ -106,48 +106,49 @@ class DistribusiPdrbMigas(models.Model):
 
 class LajuPertumbuhanPdrbMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Laju Pertumbuhan Produk Domestik Regional Bruto Dengan Migas"
@@ -156,48 +157,49 @@ class LajuPertumbuhanPdrbMigas(models.Model):
 
 class SumberPertumbuhanPdrbMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Sumber Pertumbuhan Produk Domestik Regional Bruto Dengan Migas"
@@ -206,48 +208,49 @@ class SumberPertumbuhanPdrbMigas(models.Model):
 
 class PdrbNonMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Produk Domestik Regional Bruto Non Migas"
@@ -256,48 +259,49 @@ class PdrbNonMigas(models.Model):
 
 class DistribusiPdrbNonMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Distribusi Produk Domestik Regional Bruto Non Migas"
@@ -306,48 +310,49 @@ class DistribusiPdrbNonMigas(models.Model):
 
 class LajuPertumbuhanPdrbNonMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Laju Pertumbuhan Produk Domestik Regional Bruto Non Migas"
@@ -356,48 +361,49 @@ class LajuPertumbuhanPdrbNonMigas(models.Model):
 
 class SumberPertumbuhanPdrbNonMigas(models.Model):
     a = models.FloatField(
-        verbose_name="Pertanian dan Kehutanan", default=None)
+        verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
-        verbose_name="Pertambangan dan Penggalian", default=None)
-    c = models.FloatField(verbose_name="Industri", default=None)
+        verbose_name="Pertambangan dan Penggalian")
+    c = models.FloatField(verbose_name="Industri")
     d = models.FloatField(verbose_name="Listrik dan Gas",
-                          default=None)
+                          )
     e = models.FloatField(
-        verbose_name="Air, Sampah/Limbah dan Daur Ulang", default=None)
-    f = models.FloatField(verbose_name="Kontruksi", default=None)
+        verbose_name="Air, Sampah/Limbah dan Daur Ulang")
+    f = models.FloatField(verbose_name="Kontruksi")
     g = models.FloatField(
-        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor", default=None)
+        verbose_name="Perdagangan, Reparasi Mobil/Sepeda Motor")
     h = models.FloatField(
-        verbose_name="Transportasi dan Pergudangan", default=None)
+        verbose_name="Transportasi dan Pergudangan")
     i = models.FloatField(
-        verbose_name="Penyediaan Akomodasi dan Makan Minum", default=None)
+        verbose_name="Penyediaan Akomodasi dan Makan Minum")
     j = models.FloatField(
-        verbose_name="Informasi dan Komunikasi", default=None)
+        verbose_name="Informasi dan Komunikasi")
     k = models.FloatField(
-        verbose_name="Jasa Keuangan dan Asuransi", default=None)
-    l = models.FloatField(verbose_name="Real Estate", default=None)
+        verbose_name="Jasa Keuangan dan Asuransi")
+    l = models.FloatField(verbose_name="Real Estate")
     m_n = models.FloatField(
-        verbose_name="Jasa Perusahaan", default=None)
+        verbose_name="Jasa Perusahaan")
     o = models.FloatField(
-        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib", default=None)
+        verbose_name="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib")
     p = models.FloatField(verbose_name="Jasa Pendidikan",
-                          default=None)
+                          )
     q = models.FloatField(
-        verbose_name="Jasa Kesehatan dan Kegiatan Sosial", default=None)
+        verbose_name="Jasa Kesehatan dan Kegiatan Sosial")
     r_s_t_u = models.FloatField(
-        verbose_name="Jasa Lainnya", default=None)
-    total_pdrb = models.FloatField(
-        verbose_name="Total", default=None, editable=False)
-    tanggal = models.DateField()
+        verbose_name="Jasa Lainnya")
+    # # total_pdrb = models.FloatField(
+    #     verbose_name="Total", editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pdrb = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    @property
+    def total_pdrb(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m_n + \
             self.o + self.p + self.q + self.r_s_t_u
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Sumber Pertumbuhan Produk Domestik Regional Bruto Non Migas"
@@ -409,17 +415,17 @@ class TenagaKerja(models.Model):
         ("LK", "Laki-Laki"),
         ("PR", "Perempuan")
     ]
-    angkatan_kerja = models.FloatField(default=None)
-    bekerja = models.FloatField(default=None)
-    pengangguran = models.FloatField(default=None)
-    bkn_angkatan_kerja = models.FloatField(default=None)
-    sekolah = models.FloatField(default=None)
-    urur_ruta = models.FloatField(default=None)
-    lainnya = models.FloatField(default=None)
+    angkatan_kerja = models.FloatField(null=True)
+    bekerja = models.FloatField(null=True)
+    pengangguran = models.FloatField(null=True)
+    bkn_angkatan_kerja = models.FloatField(null=True)
+    sekolah = models.FloatField(null=True)
+    urur_ruta = models.FloatField(null=True)
+    lainnya = models.FloatField(null=True)
     gender = models.CharField(max_length=15, choices=CHOICES)
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Ketenagakerjaan"
@@ -427,15 +433,15 @@ class TenagaKerja(models.Model):
 
 
 class Kemiskinan(models.Model):
-    ppdk_mskn = models.FloatField(default=None)
-    p0 = models.FloatField(default=None)
-    p1 = models.FloatField(default=None)
-    p2 = models.FloatField(default=None)
-    gk = models.FloatField(default=None)
-    tanggal = models.DateField()
+    ppdk_mskn = models.FloatField(null=True)
+    p0 = models.FloatField(null=True)
+    p1 = models.FloatField(null=True)
+    p2 = models.FloatField(null=True)
+    gk = models.FloatField(null=True)
+    tanggal = models.DateField(null=True)
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Kemiskinan"
@@ -445,16 +451,16 @@ class Kemiskinan(models.Model):
 
 
 class Ipm(models.Model):
-    uhh = models.FloatField(default=None)
-    rls = models.FloatField(default=None)
-    hls = models.FloatField(default=None)
-    ppp = models.FloatField(default=None)
-    ipm = models.FloatField(default=None)
-    pertumbuhan = models.FloatField(default=None)
-    tanggal = models.DateField()
+    uhh = models.FloatField(null=True)
+    rls = models.FloatField(null=True)
+    hls = models.FloatField(null=True)
+    ppp = models.FloatField(null=True)
+    ipm = models.FloatField(null=True)
+    pertumbuhan = models.FloatField(null=True)
+    tanggal = models.DateField(null=True)
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Indeks Pembangunan Manusia"
@@ -462,27 +468,28 @@ class Ipm(models.Model):
 
 
 class Inflasi(models.Model):
-    sandang = models.FloatField(default=None)
-    sembako = models.FloatField(default=None)
-    perumahan = models.FloatField(default=None)
-    kesehatan = models.FloatField(default=None)
-    transportasi = models.FloatField(default=None)
-    informasi = models.FloatField(default=None)
-    rekreasi = models.FloatField(default=None)
-    pendidikan = models.FloatField(default=None)
-    penyedia_pangan = models.FloatField(default=None)
-    perawatan_pribadi = models.FloatField(default=None)
-    total_inflasi = models.FloatField(default=None)
-    tanggal = models.DateField()
+    sandang = models.FloatField(null=True)
+    sembako = models.FloatField(null=True)
+    perumahan = models.FloatField(null=True)
+    kesehatan = models.FloatField(null=True)
+    transportasi = models.FloatField(null=True)
+    informasi = models.FloatField(null=True)
+    rekreasi = models.FloatField(null=True)
+    pendidikan = models.FloatField(null=True)
+    penyedia_pangan = models.FloatField(null=True)
+    perawatan_pribadi = models.FloatField(null=True)
+    total_inflasi = models.FloatField(null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_inflasi = self.sandang + self.sembako + self.perumahan + self.kesehatan + \
+    @property
+    def total_inflasi(self):
+        total = self.sandang + self.sembako + self.perumahan + self.kesehatan + \
             self.transportasi + self.informasi + self.rekreasi + \
             self.pendidikan + self.penyedia_pangan + self.perawatan_pribadi
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Inflasi"
@@ -491,27 +498,28 @@ class Inflasi(models.Model):
 
 class InflasiDod(models.Model):
 
-    sandang = models.FloatField(default=None)
-    sembako = models.FloatField(default=None)
-    perumahan = models.FloatField(default=None)
-    kesehatan = models.FloatField(default=None)
-    transportasi = models.FloatField(default=None)
-    informasi = models.FloatField(default=None)
-    rekreasi = models.FloatField(default=None)
-    pendidikan = models.FloatField(default=None)
-    penyedia_pangan = models.FloatField(default=None)
-    perawatan_pribadi = models.FloatField(default=None)
-    total_inflasi = models.FloatField(default=None)
-    tanggal = models.DateField()
+    sandang = models.FloatField(null=True)
+    sembako = models.FloatField(null=True)
+    perumahan = models.FloatField(null=True)
+    kesehatan = models.FloatField(null=True)
+    transportasi = models.FloatField(null=True)
+    informasi = models.FloatField(null=True)
+    rekreasi = models.FloatField(null=True)
+    pendidikan = models.FloatField(null=True)
+    penyedia_pangan = models.FloatField(null=True)
+    perawatan_pribadi = models.FloatField(null=True)
+    total_inflasi = models.FloatField(null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_inflasi = self.sandang + self.sembako + self.perumahan + self.kesehatan + \
+    @property
+    def total_inflasi(self):
+        total = self.sandang + self.sembako + self.perumahan + self.kesehatan + \
             self.transportasi + self.informasi + self.rekreasi + \
             self.pendidikan + self.penyedia_pangan + self.perawatan_pribadi
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Inflasi Date on Date"
@@ -519,27 +527,28 @@ class InflasiDod(models.Model):
 
 
 class InflasiYoy(models.Model):
-    sandang = models.FloatField(default=None)
-    sembako = models.FloatField(default=None)
-    perumahan = models.FloatField(default=None)
-    kesehatan = models.FloatField(default=None)
-    transportasi = models.FloatField(default=None)
-    informasi = models.FloatField(default=None)
-    rekreasi = models.FloatField(default=None)
-    pendidikan = models.FloatField(default=None)
-    penyedia_pangan = models.FloatField(default=None)
-    perawatan_pribadi = models.FloatField(default=None)
-    total_inflasi = models.FloatField(default=None)
-    tanggal = models.DateField()
+    sandang = models.FloatField(null=True)
+    sembako = models.FloatField(null=True)
+    perumahan = models.FloatField(null=True)
+    kesehatan = models.FloatField(null=True)
+    transportasi = models.FloatField(null=True)
+    informasi = models.FloatField(null=True)
+    rekreasi = models.FloatField(null=True)
+    pendidikan = models.FloatField(null=True)
+    penyedia_pangan = models.FloatField(null=True)
+    perawatan_pribadi = models.FloatField(null=True)
+    total_inflasi = models.FloatField(null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_inflasi = self.sandang + self.sembako + self.perumahan + self.kesehatan + \
-            self.transportasi + self.informasi + self.rekreasi + \
-            self.pendidikan + self.penyedia_pangan + self.perawatan_pribadi
-        super().save(*args, **kwargs)
+    @property
+    def total_inflasi(self):
+        total = self.sandang + self.sembako + self.perumahan + self.kesehatan + self.transportasi + \
+            self.informasi + self.rekreasi + self.pendidikan + \
+            self.penyedia_pangan + self.perawatan_pribadi
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Inflasi Year on Year"
@@ -547,63 +556,63 @@ class InflasiYoy(models.Model):
 
 
 class PendudukLaki(models.Model):
-    a = models.IntegerField(default=None, verbose_name='0-4 Tahun')
-    b = models.IntegerField(default=None, verbose_name='5-9 Tahun')
-    c = models.IntegerField(default=None, verbose_name='10-14 Tahun')
-    d = models.IntegerField(default=None, verbose_name='15-19 Tahun')
-    e = models.IntegerField(default=None, verbose_name='20-24 Tahun')
-    f = models.IntegerField(default=None, verbose_name='25-29 Tahun')
-    g = models.IntegerField(default=None, verbose_name='30-34 Tahun')
-    h = models.IntegerField(default=None, verbose_name='35-39 Tahun')
-    i = models.IntegerField(default=None, verbose_name='40-44 Tahun')
-    j = models.IntegerField(default=None, verbose_name='45-49 Tahun')
-    k = models.IntegerField(default=None, verbose_name='50-54 Tahun')
-    l = models.IntegerField(default=None, verbose_name='55-59 Tahun')
-    m = models.IntegerField(default=None, verbose_name='60-64 Tahun')
-    n = models.IntegerField(default=None, verbose_name='65-69 Tahun')
-    o = models.IntegerField(default=None, verbose_name='70-74 Tahun')
-    p = models.IntegerField(default=None, verbose_name='75+ Tahun')
-    total = models.IntegerField(default=None, editable=False)
-    tanggal = models.DateField()
+    a = models.IntegerField(verbose_name='0-4 Tahun')
+    b = models.IntegerField(verbose_name='5-9 Tahun')
+    c = models.IntegerField(verbose_name='10-14 Tahun')
+    d = models.IntegerField(verbose_name='15-19 Tahun')
+    e = models.IntegerField(verbose_name='20-24 Tahun')
+    f = models.IntegerField(verbose_name='25-29 Tahun')
+    g = models.IntegerField(verbose_name='30-34 Tahun')
+    h = models.IntegerField(verbose_name='35-39 Tahun')
+    i = models.IntegerField(verbose_name='40-44 Tahun')
+    j = models.IntegerField(verbose_name='45-49 Tahun')
+    k = models.IntegerField(verbose_name='50-54 Tahun')
+    l = models.IntegerField(verbose_name='55-59 Tahun')
+    m = models.IntegerField(verbose_name='60-64 Tahun')
+    n = models.IntegerField(verbose_name='65-69 Tahun')
+    o = models.IntegerField(verbose_name='70-74 Tahun')
+    p = models.IntegerField(verbose_name='75+ Tahun')
+    # total = models.IntegerField(editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    def total(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m + \
             self.n + self.o + self.p
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
 
 class PendudukPr(models.Model):
-    a = models.IntegerField(default=None, verbose_name='0-4 Tahun')
-    b = models.IntegerField(default=None, verbose_name='5-9 Tahun')
-    c = models.IntegerField(default=None, verbose_name='10-14 Tahun')
-    d = models.IntegerField(default=None, verbose_name='15-19 Tahun')
-    e = models.IntegerField(default=None, verbose_name='20-24 Tahun')
-    f = models.IntegerField(default=None, verbose_name='25-29 Tahun')
-    g = models.IntegerField(default=None, verbose_name='30-34 Tahun')
-    h = models.IntegerField(default=None, verbose_name='35-39 Tahun')
-    i = models.IntegerField(default=None, verbose_name='40-44 Tahun')
-    j = models.IntegerField(default=None, verbose_name='45-49 Tahun')
-    k = models.IntegerField(default=None, verbose_name='50-54 Tahun')
-    l = models.IntegerField(default=None, verbose_name='55-59 Tahun')
-    m = models.IntegerField(default=None, verbose_name='60-64 Tahun')
-    n = models.IntegerField(default=None, verbose_name='65-69 Tahun')
-    o = models.IntegerField(default=None, verbose_name='70-74 Tahun')
-    p = models.IntegerField(default=None, verbose_name='75+ Tahun')
-    total = models.IntegerField(default=None, editable=False)
-    tanggal = models.DateField()
+    a = models.IntegerField(verbose_name='0-4 Tahun')
+    b = models.IntegerField(verbose_name='5-9 Tahun')
+    c = models.IntegerField(verbose_name='10-14 Tahun')
+    d = models.IntegerField(verbose_name='15-19 Tahun')
+    e = models.IntegerField(verbose_name='20-24 Tahun')
+    f = models.IntegerField(verbose_name='25-29 Tahun')
+    g = models.IntegerField(verbose_name='30-34 Tahun')
+    h = models.IntegerField(verbose_name='35-39 Tahun')
+    i = models.IntegerField(verbose_name='40-44 Tahun')
+    j = models.IntegerField(verbose_name='45-49 Tahun')
+    k = models.IntegerField(verbose_name='50-54 Tahun')
+    l = models.IntegerField(verbose_name='55-59 Tahun')
+    m = models.IntegerField(verbose_name='60-64 Tahun')
+    n = models.IntegerField(verbose_name='65-69 Tahun')
+    o = models.IntegerField(verbose_name='70-74 Tahun')
+    p = models.IntegerField(verbose_name='75+ Tahun')
+    # total = models.IntegerField(editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    def total(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m + \
             self.n + self.o + self.p
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
 
 class PendudukLakiKecamatan(models.Model):
@@ -635,33 +644,33 @@ class PendudukLakiKecamatan(models.Model):
     ]
     kec = models.CharField(verbose_name='Kecamatan',
                            choices=KECAMATAN, max_length=35, default='Dayeuhluhur')
-    a = models.IntegerField(default=None, verbose_name='0-4 Tahun')
-    b = models.IntegerField(default=None, verbose_name='5-9 Tahun')
-    c = models.IntegerField(default=None, verbose_name='10-14 Tahun')
-    d = models.IntegerField(default=None, verbose_name='15-19 Tahun')
-    e = models.IntegerField(default=None, verbose_name='20-24 Tahun')
-    f = models.IntegerField(default=None, verbose_name='25-29 Tahun')
-    g = models.IntegerField(default=None, verbose_name='30-34 Tahun')
-    h = models.IntegerField(default=None, verbose_name='35-39 Tahun')
-    i = models.IntegerField(default=None, verbose_name='40-44 Tahun')
-    j = models.IntegerField(default=None, verbose_name='45-49 Tahun')
-    k = models.IntegerField(default=None, verbose_name='50-54 Tahun')
-    l = models.IntegerField(default=None, verbose_name='55-59 Tahun')
-    m = models.IntegerField(default=None, verbose_name='60-64 Tahun')
-    n = models.IntegerField(default=None, verbose_name='65-69 Tahun')
-    o = models.IntegerField(default=None, verbose_name='70-74 Tahun')
-    p = models.IntegerField(default=None, verbose_name='75+ Tahun')
-    total = models.IntegerField(default=None, editable=False)
-    tanggal = models.DateField()
+    a = models.IntegerField(verbose_name='0-4 Tahun')
+    b = models.IntegerField(verbose_name='5-9 Tahun')
+    c = models.IntegerField(verbose_name='10-14 Tahun')
+    d = models.IntegerField(verbose_name='15-19 Tahun')
+    e = models.IntegerField(verbose_name='20-24 Tahun')
+    f = models.IntegerField(verbose_name='25-29 Tahun')
+    g = models.IntegerField(verbose_name='30-34 Tahun')
+    h = models.IntegerField(verbose_name='35-39 Tahun')
+    i = models.IntegerField(verbose_name='40-44 Tahun')
+    j = models.IntegerField(verbose_name='45-49 Tahun')
+    k = models.IntegerField(verbose_name='50-54 Tahun')
+    l = models.IntegerField(verbose_name='55-59 Tahun')
+    m = models.IntegerField(verbose_name='60-64 Tahun')
+    n = models.IntegerField(verbose_name='65-69 Tahun')
+    o = models.IntegerField(verbose_name='70-74 Tahun')
+    p = models.IntegerField(verbose_name='75+ Tahun')
+    # total = models.IntegerField(editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    def total(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m + \
             self.n + self.o + self.p
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
 
 class PendudukPrKecamatan(models.Model):
@@ -693,33 +702,33 @@ class PendudukPrKecamatan(models.Model):
     ]
     kec = models.CharField(verbose_name='Kecamatan',
                            choices=KECAMATAN, max_length=35, default='Dayeuhluhur')
-    a = models.IntegerField(default=None, verbose_name='0-4 Tahun')
-    b = models.IntegerField(default=None, verbose_name='5-9 Tahun')
-    c = models.IntegerField(default=None, verbose_name='10-14 Tahun')
-    d = models.IntegerField(default=None, verbose_name='15-19 Tahun')
-    e = models.IntegerField(default=None, verbose_name='20-24 Tahun')
-    f = models.IntegerField(default=None, verbose_name='25-29 Tahun')
-    g = models.IntegerField(default=None, verbose_name='30-34 Tahun')
-    h = models.IntegerField(default=None, verbose_name='35-39 Tahun')
-    i = models.IntegerField(default=None, verbose_name='40-44 Tahun')
-    j = models.IntegerField(default=None, verbose_name='45-49 Tahun')
-    k = models.IntegerField(default=None, verbose_name='50-54 Tahun')
-    l = models.IntegerField(default=None, verbose_name='55-59 Tahun')
-    m = models.IntegerField(default=None, verbose_name='60-64 Tahun')
-    n = models.IntegerField(default=None, verbose_name='65-69 Tahun')
-    o = models.IntegerField(default=None, verbose_name='70-74 Tahun')
-    p = models.IntegerField(default=None, verbose_name='75+ Tahun')
-    total = models.IntegerField(default=None, editable=False)
-    tanggal = models.DateField()
+    a = models.IntegerField(verbose_name='0-4 Tahun')
+    b = models.IntegerField(verbose_name='5-9 Tahun')
+    c = models.IntegerField(verbose_name='10-14 Tahun')
+    d = models.IntegerField(verbose_name='15-19 Tahun')
+    e = models.IntegerField(verbose_name='20-24 Tahun')
+    f = models.IntegerField(verbose_name='25-29 Tahun')
+    g = models.IntegerField(verbose_name='30-34 Tahun')
+    h = models.IntegerField(verbose_name='35-39 Tahun')
+    i = models.IntegerField(verbose_name='40-44 Tahun')
+    j = models.IntegerField(verbose_name='45-49 Tahun')
+    k = models.IntegerField(verbose_name='50-54 Tahun')
+    l = models.IntegerField(verbose_name='55-59 Tahun')
+    m = models.IntegerField(verbose_name='60-64 Tahun')
+    n = models.IntegerField(verbose_name='65-69 Tahun')
+    o = models.IntegerField(verbose_name='70-74 Tahun')
+    p = models.IntegerField(verbose_name='75+ Tahun')
+    # total = models.IntegerField(editable=False, null=True)
+    tanggal = models.DateField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
+    def total(self):
+        total = self.a + self.b + self.c + self.d + self.e + self.f + self.g + self.h + \
             self.i + self.j + self.k + self.l + self.m + \
             self.n + self.o + self.p
-        super().save(*args, **kwargs)
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
 
 class Kota (models.Model):
@@ -750,14 +759,14 @@ class Kota (models.Model):
         PendudukLaki, related_name="penduduk_laki", on_delete=models.CASCADE)
     pend_pr = models.ForeignKey(
         PendudukPr, related_name="penduduk_perempuan", on_delete=models.CASCADE)
-    total_pend = models.IntegerField()
+    total_pend = models.IntegerField(null=True)
 
-    def save(self, *args, **kwargs):
-        self.total_pend = self.pend_lk + self.pend_pr
-        super().save(*args, **kwargs)
+    def total_pend(self):
+        total = self.pend_lk + self.pend_pr
+        return total
 
     def __str__(self):
-        return self.tanggal
+        return str(self.tanggal)
 
     class Meta:
         verbose_name = "Kota"

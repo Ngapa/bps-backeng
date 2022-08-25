@@ -10,6 +10,7 @@ admin.site.site_header = "BPS Admin"
 
 @admin.register(Inflasi)
 class InflasiModelAdmin(ImportExportModelAdmin):
+
     class Meta:
         model = Inflasi
         fields = '__all__'
@@ -103,6 +104,34 @@ class TenagaKerjaModelAdmin(ImportExportModelAdmin):
 class IpmModelAdmin(ImportExportModelAdmin):
     class Meta:
         model = Ipm
+        fields = '__all__'
+
+
+@admin.register(PendudukLaki)
+class PendudukLakiModelAdmin(ImportExportModelAdmin):
+    class Meta:
+        model = PendudukLaki
+        fields = '__all__'
+
+
+@admin.register(PendudukLakiKecamatan)
+class PendudukLakiKecamatanModelAdmin(ImportExportModelAdmin):
+    class Meta:
+        model = PendudukLakiKecamatan
+        fields = '__all__'
+
+
+@admin.register(PendudukPr)
+class PendudukPrModelAdmin(ImportExportModelAdmin):
+    class Meta:
+        model = PendudukPr
+        fields = '__all__'
+
+
+@admin.register(PendudukPrKecamatan)
+class PendudukPrKecamatanModelAdmin(ImportExportModelAdmin):
+    class Meta:
+        model = PendudukPrKecamatan
         fields = '__all__'
 
 
