@@ -80,7 +80,7 @@ DATABASES = {
     #     'PORT': '3306',
     # }
     'default': {
-        'ENGINE': 'django.db.backends.psotgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd8f11sufpulgg4',
         'USER': 'mzvfucdkrmazai',
         'PASSWORD': '1c147b226370c12220d9324e7f179e74d8691dac48c16b66a7645a58d74e8677',
