@@ -10,79 +10,21 @@ admin.site.site_header = "BPS Admin"
 
 @admin.register(Inflasi)
 class InflasiModelAdmin(ImportExportModelAdmin):
+    # list_display = ("tanggal", "kategori")
+    # list_filter = ('kategori')
 
     class Meta:
         model = Inflasi
         fields = '__all__'
 
 
-@admin.register(InflasiDod)
-class InflasiDodModelAdmin(ImportExportModelAdmin):
+@admin.register(Pdrb)
+class PdrbModelAdmin(ImportExportModelAdmin):
+    # list_display = ("tanggal", "kategori")
+    # list_filter = ('kategori')
+
     class Meta:
-        model = InflasiDod
-        fields = '__all__'
-
-
-@admin.register(InflasiYoy)
-class InflasiYoyModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = InflasiYoy
-        fields = '__all__'
-
-
-@admin.register(PdrbMigas)
-class PdrbMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = PdrbMigas
-        fields = '__all__'
-
-
-@admin.register(DistribusiPdrbMigas)
-class DistribusiPdrbMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = DistribusiPdrbMigas
-        fields = '__all__'
-
-
-@admin.register(LajuPertumbuhanPdrbMigas)
-class LajuPertumbuhanPdrbMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = LajuPertumbuhanPdrbMigas
-        fields = '__all__'
-
-
-@admin.register(SumberPertumbuhanPdrbMigas)
-class SumberPertumbuhanPdrbMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = SumberPertumbuhanPdrbMigas
-        fields = '__all__'
-
-
-@admin.register(PdrbNonMigas)
-class PdrbNonMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = PdrbNonMigas
-        fields = '__all__'
-
-
-@admin.register(DistribusiPdrbNonMigas)
-class DistribusiPdrbNonMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = DistribusiPdrbNonMigas
-        fields = '__all__'
-
-
-@admin.register(LajuPertumbuhanPdrbNonMigas)
-class LajuPertumbuhanPdrbNonMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = LajuPertumbuhanPdrbNonMigas
-        fields = '__all__'
-
-
-@admin.register(SumberPertumbuhanPdrbNonMigas)
-class SumberPertumbuhanPdrbNonMigasModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = SumberPertumbuhanPdrbNonMigas
+        model = Pdrb
         fields = '__all__'
 
 
@@ -107,31 +49,23 @@ class IpmModelAdmin(ImportExportModelAdmin):
         fields = '__all__'
 
 
-@admin.register(PendudukLaki)
-class PendudukLakiModelAdmin(ImportExportModelAdmin):
+@admin.register(Penduduk)
+class PendudukModelAdmin(ImportExportModelAdmin):
+    # list_display = ("tanggal", "jenis_kelamin")
+    # list_filter = ('jenis_kelamin')
+
     class Meta:
-        model = PendudukLaki
+        model = Penduduk
         fields = '__all__'
 
 
-@admin.register(PendudukLakiKecamatan)
-class PendudukLakiKecamatanModelAdmin(ImportExportModelAdmin):
+@admin.register(PendudukKecamatan)
+class PendudukKecamatanModelAdmin(ImportExportModelAdmin):
+    # list_display = ("tanggal", "kecamatan", "jenis_kelamin")
+    # list_filter = ('kecamatan')
+
     class Meta:
-        model = PendudukLakiKecamatan
-        fields = '__all__'
-
-
-@admin.register(PendudukPr)
-class PendudukPrModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = PendudukPr
-        fields = '__all__'
-
-
-@admin.register(PendudukPrKecamatan)
-class PendudukPrKecamatanModelAdmin(ImportExportModelAdmin):
-    class Meta:
-        model = PendudukPrKecamatan
+        model = PendudukKecamatan
         fields = '__all__'
 
 

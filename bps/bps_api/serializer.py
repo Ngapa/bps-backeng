@@ -8,62 +8,9 @@ class InflasiSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class InflasiDodSerializers(serializers.ModelSerializer):
+class PdrbSerializers(serializers.ModelSerializer):
     class Meta:
-        model = InflasiDod
-        fields = '__all__'
-
-
-class InflasiYoySerializers:
-    model = InflasiYoy
-    fields = '__all__'
-
-
-class PdrbMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = PdrbMigas
-        fields = '__all__'
-
-
-class DistPdrbMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = DistribusiPdrbMigas
-        fields = '__all__'
-
-
-class LajuPertPdrbMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = LajuPertumbuhanPdrbMigas
-        fields = '__all__'
-
-
-class SumbPertPdrbMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = SumberPertumbuhanPdrbMigas
-        fields = '__all__'
-
-
-class PdrbNonMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = PdrbNonMigas
-        fields = '__all__'
-
-
-class DistPdrbNonMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = DistribusiPdrbNonMigas
-        fields = '__all__'
-
-
-class LajuPertPdrbNonMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = LajuPertumbuhanPdrbNonMigas
-        fields = '__all__'
-
-
-class SumbPertPdrbNonMigasSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = SumberPertumbuhanPdrbMigas
+        model = Pdrb
         fields = '__all__'
 
 
