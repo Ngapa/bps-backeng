@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-!c#5l-dh#npl84#s3pshcuvi$kps$$or#v^2ki=sg36j&-w_c0
 DEBUG = False
 
 ALLOWED_HOSTS = [".railway.app", 'localhost',
-                 '.pythonanywhere.com', ".heroku.app"]
+                 '.pythonanywhere.com', ".herokuapp.com"]
 
 
 # Application definition
