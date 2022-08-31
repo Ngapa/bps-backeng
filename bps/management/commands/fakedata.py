@@ -3,46 +3,46 @@ from django.core.management.base import BaseCommand
 from faker import Faker
 from bps.models import *
 
-KECAMATAN = [
-    ('Dayeuhluhur', 'Dayeuhluhur'),
-    ('Wanareja', 'Wanareja'),
-    ('Majenang', 'Majenang'),
-    ('Cimanggu', 'Cimanggu'),
-    ('Karangpucung', 'Karangpucung'),
-    ('Cipari', 'Cipari'),
-    ('Sidareja', 'Sidareja'),
-    ('Kedungreja', 'Kedungreja'),
-    ('Patimuan', 'Patimuan'),
-    ('Gandrungmangu', 'Gandrungmangu'),
-    ('Bantarsari', 'Bantarsari'),
-    ('Kawunganten', 'Kawunganten'),
-    ('Kampung Laut',  'Kampung Laut'),
-    ('Jeruklegi', 'Jeruklegi'),
-    ('Kesugihan', 'Kesugihan'),
-    ('Adipala', 'Adipala'),
-    ('Maos', 'Maos'),
-    ('Kroya', 'Kroya'),
-    ('Binangun', 'Binangun'),
-    ('Sampang', 'Sampang'),
-    ('Nusawungu', 'Nusawungu'),
-    ('Cilacap Selatan', 'Cilacap Selatan'),
-    ('Cilacap Tengah', 'Cilacap Tengah'),
-    ('Cilacap Utara', 'Cilacap Utara'),
-]
+KECAMATAN = (
+    'Dayeuhluhur',
+    'Wanareja',
+    'Majenang',
+    'Cimanggu',
+    'Karangpucung',
+    'Cipari',
+    'Sidareja',
+    'Kedungreja',
+    'Patimuan',
+    'Gandrungmangu',
+    'Bantarsari',
+    'Kawunganten',
+    'Kampung Laut',
+    'Jeruklegi',
+    'Kesugihan',
+    'Adipala',
+    'Maos',
+    'Kroya',
+    'Binangun',
+    'Sampang',
+    'Nusawungu',
+    'Cilacap Selatan',
+    'Cilacap Tengah',
+    'Cilacap Utara',
+)
 
-KATEGORI_INFLASI = [
-    ("Inflasi", "Inflasi"),
-    ("Inflasi DoD", "Inflasi DoD"),
-    ("Inflasi YoY", "Inflasi YoY")
-]
-KATEGORI_PDRB = [
-    ("PDRB Migas", "PDRB Migas"),
-    ("Distribusi PDRB Migas", "Distribusi PDRB Migas"),
-    ("Laju Pertumbuhan PDRB Migas", "Laju Pertumbuhan PDRB Migas"),
-    ("PDRB Migas", "PDRB Non Migas"),
-    ("Distribusi PDRB Non Migas", "Distribusi PDRB Non Migas"),
-    ("Laju Pertumbuhan PDRB Non Migas", "Laju Pertumbuhan PDRB Non Migas"),
-]
+KATEGORI_INFLASI = (
+    "Inflasi",
+    "Inflasi DoD",
+    "Inflasi YoY"
+)
+KATEGORI_PDRB = (
+    "PDRB Migas",
+    "Distribusi PDRB Migas",
+    "Laju Pertumbuhan PDRB Migas",
+    "PDRB Non Migas",
+    "Distribusi PDRB Non Migas",
+    "Laju Pertumbuhan PDRB Non Migas",
+)
 
 
 class Command(BaseCommand):
@@ -75,7 +75,7 @@ class Command(BaseCommand):
             Inflasi.objects.create(kategori=kategori, sandang=fl, sembako=fl1, perumahan=fl2, kesehatan=fl3, transportasi=fl4,
                                    informasi=fl5, rekreasi=fl0, penyedia_pangan=fl1, perawatan_pribadi=fl2, pendidikan=fl3, total_inflasi=fl7, tanggal=date)
 
-        for _ in range(3):
+        for _ in range(6):
             a = fake.pyfloat(left_digits=3, right_digits=3,
                              positive=True, max_value=200.0)
             b = fake.pyfloat(left_digits=3, right_digits=3,
@@ -117,4 +117,4 @@ class Command(BaseCommand):
                 elements=KATEGORI_PDRB, unique=True)
 
             Pdrb.objects.create(kategori=kategori, a=a, b=b, c=c, d=d, e=e, f=f, g=g, h=h,
-                                i=i, j=j, k=k, l=l, m_n=m, o=n, p=o, q=p, r_s_t_u=q, total=r, tanggal=date)
+                                i=i, j=j, k=k, l=l, m_n=m, o=n, p=o, q=p, r_s_t_u=q, total_pdrb=r, tanggal=date)

@@ -7,11 +7,11 @@ class Pdrb(models.Model):
         ("PDRB Migas", "PDRB Migas"),
         ("Distribusi PDRB Migas", "Distribusi PDRB Migas"),
         ("Laju Pertumbuhan PDRB Migas", "Laju Pertumbuhan PDRB Migas"),
-        ("PDRB Migas", "PDRB Non Migas"),
+        ("PDRB Non Migas", "PDRB Non Migas"),
         ("Distribusi PDRB Non Migas", "Distribusi PDRB Non Migas"),
         ("Laju Pertumbuhan PDRB Non Migas", "Laju Pertumbuhan PDRB Non Migas"),
     ]
-    kategori = models.CharField(max_length=100, choices=KATEGORI)
+    kategori = models.CharField(max_length=250, choices=KATEGORI, )
     a = models.FloatField(
         verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
@@ -114,9 +114,9 @@ class Inflasi(models.Model):
     KATEGORI = [
         ("Inflasi", "Inflasi"),
         ("Inflasi DoD", "Inflasi DoD"),
-        ("Inflasi YoY", "Inflasi YoY")
+        ("Inflasi YoY", "Inflasi YoY"),
     ]
-
+    kategori = models.CharField(max_length=50, choices=KATEGORI)
     sandang = models.FloatField(null=True, blank=True)
     sembako = models.FloatField(null=True, blank=True)
     perumahan = models.FloatField(null=True, blank=True)
