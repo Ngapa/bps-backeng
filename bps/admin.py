@@ -8,10 +8,17 @@ admin.site.index_title = "BPS Admin"
 admin.site.site_header = "BPS Admin"
 
 
+@admin.register(Kategori)
+class KategoriModelAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Kategori
+        fields = '__all__'
+
+
 @admin.register(Inflasi)
 class InflasiModelAdmin(ImportExportModelAdmin):
-    # list_display = ("tanggal", "kategori")
-    # list_filter = ('kategori')
+    list_display = ("kategori", "tanggal")
+    list_filter = ('kategori', 'tanggal')
 
     class Meta:
         model = Inflasi
@@ -20,8 +27,8 @@ class InflasiModelAdmin(ImportExportModelAdmin):
 
 @admin.register(Pdrb)
 class PdrbModelAdmin(ImportExportModelAdmin):
-    # list_display = ("tanggal", "kategori")
-    # list_filter = ('kategori')
+    list_display = ("kategori", "tanggal")
+    list_filter = ('kategori', 'tanggal')
 
     class Meta:
         model = Pdrb

@@ -1,3 +1,4 @@
+from os import stat
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -13,16 +14,23 @@ class InflasiApiViews(APIView):
         return Response({"Inflasi": serializer.data}, status=status.HTTP_200_OK)
 
 
+class InflasiKeseluruhanApiViews(APIView):
+    def get(self, request, *args, **kwargs):
+        inflasi = Inflasi.objects.filter(kategori="1")
+        serializer = InflasiSerializers(inflasi, many=True)
+        return Response({"Inflasi": serializer.data}, status=status.HTTP_200_OK)
+
+
 class InflasiYoyApiViews(APIView):
     def get(self, *args, **kwargs):
-        inflasi = Inflasi.objects.filter(kategori="Inflasi YoY")
+        inflasi = Inflasi.objects.filter(kategori="2")
         serializer = InflasiSerializers(inflasi, many=True)
         return Response({"Inflasi Year on Year: ": serializer.data}, status=status.HTTP_200_OK)
 
 
 class InflasiDodApiViews(APIView):
     def get(self, *args, **kwargs):
-        inflasi = Inflasi.objects.filter(kategori="Inflasi DoD")
+        inflasi = Inflasi.objects.filter(kategori="3")
         serializer = InflasiSerializers(inflasi, many=True)
         return Response({"Inflasi Date on Date: ": serializer.data}, status=status.HTTP_200_OK)
 
@@ -37,42 +45,42 @@ class PdrbApiViews(APIView):
 
 class PdrbMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='PDRB Migas')
+        pdrb = Pdrb.objects.filter(kategori='4')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
 class DistPdrbMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='Distribusi PDRB Migas')
+        pdrb = Pdrb.objects.filter(kategori='5')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
 class LajuPdrbMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='Laju Pertumbuhan PDRB Migas')
+        pdrb = Pdrb.objects.filter(kategori='6')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
 class PdrbNonMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='PDRB Non Migas')
+        pdrb = Pdrb.objects.filter(kategori='7')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
 class DistPdrbNonMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='Distribusi PDRB Non Migas')
+        pdrb = Pdrb.objects.filter(kategori='8')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
 class LajuPdrbNonMigasApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='Laju Pertumbuhan PDRB Non Migas')
+        pdrb = Pdrb.objects.filter(kategori='9')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
@@ -107,3 +115,10 @@ class KotaApiViews(APIView):
         kota = Kota.objects.all()
         serializer = KotaSerializers(kota, many=True)
         return Response({"Kota": serializer.data}, status=status.HTTP_200_OK)
+
+
+class KategoriViews(APIView):
+    def get(self, request, *args, **kwargs):
+        kategori = Kategori.objects.all()
+        serializer = KategoriSerializers(kategori, many=True)
+        return Response({'Kategori': serializer.data}, status=status.HTTP_200_OK)

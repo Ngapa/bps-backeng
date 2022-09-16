@@ -72,7 +72,7 @@ class Command(BaseCommand):
                 elements=KATEGORI_INFLASI, unique=True)
             date = fake.date()
 
-            Inflasi.objects.create(kategori=kategori, sandang=fl, sembako=fl1, perumahan=fl2, kesehatan=fl3, transportasi=fl4,
+            Inflasi.objects.create(sandang=fl, sembako=fl1, perumahan=fl2, kesehatan=fl3, transportasi=fl4,
                                    informasi=fl5, rekreasi=fl0, penyedia_pangan=fl1, perawatan_pribadi=fl2, pendidikan=fl3, total_inflasi=fl7, tanggal=date)
 
         for _ in range(6):
@@ -116,5 +116,5 @@ class Command(BaseCommand):
             kategori = fake.random_elements(
                 elements=KATEGORI_PDRB, unique=True)
 
-            Pdrb.objects.create(kategori=kategori, a=a, b=b, c=c, d=d, e=e, f=f, g=g, h=h,
+            Pdrb.objects.create(a=a, b=b, c=c, d=d, e=e, f=f, g=g, h=h,
                                 i=i, j=j, k=k, l=l, m_n=m, o=n, p=o, q=p, r_s_t_u=q, total_pdrb=r, tanggal=date)

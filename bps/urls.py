@@ -6,6 +6,7 @@ from bps.bps_api.views import *
 
 urlpatterns = [
     path('inflasi/', InflasiApiViews.as_view()),
+    path('inflasikeseluruhan/', InflasiKeseluruhanApiViews.as_view()),
     path('inflasiyoy/', InflasiYoyApiViews.as_view()),
     path('inflasidod/', InflasiDodApiViews.as_view()),
     path('pdrb/', PdrbApiViews.as_view()),

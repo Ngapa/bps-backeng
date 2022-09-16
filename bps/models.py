@@ -2,16 +2,20 @@ from django.db import models
 # Create your models here.
 
 
+class Kategori(models.Model):
+    nama = models.CharField(
+        max_length=100, verbose_name="Nama", null=True, blank=True)
+    deskripsi = models.TextField()
+
+    def __str__(self):
+        return self.nama
+
+    class Meta:
+        verbose_name_plural = "Kategori"
+
+
 class Pdrb(models.Model):
-    KATEGORI = [
-        ("PDRB Migas", "PDRB Migas"),
-        ("Distribusi PDRB Migas", "Distribusi PDRB Migas"),
-        ("Laju Pertumbuhan PDRB Migas", "Laju Pertumbuhan PDRB Migas"),
-        ("PDRB Non Migas", "PDRB Non Migas"),
-        ("Distribusi PDRB Non Migas", "Distribusi PDRB Non Migas"),
-        ("Laju Pertumbuhan PDRB Non Migas", "Laju Pertumbuhan PDRB Non Migas"),
-    ]
-    kategori = models.CharField(max_length=250, choices=KATEGORI, )
+    kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE, null=True)
     a = models.FloatField(
         verbose_name="Pertanian dan Kehutanan")
     b = models.FloatField(
@@ -111,12 +115,7 @@ class Ipm(models.Model):
 
 
 class Inflasi(models.Model):
-    KATEGORI = [
-        ("Inflasi", "Inflasi"),
-        ("Inflasi DoD", "Inflasi DoD"),
-        ("Inflasi YoY", "Inflasi YoY"),
-    ]
-    kategori = models.CharField(max_length=50, choices=KATEGORI)
+    kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE, null=True)
     sandang = models.FloatField(null=True, blank=True)
     sembako = models.FloatField(null=True, blank=True)
     perumahan = models.FloatField(null=True, blank=True)
