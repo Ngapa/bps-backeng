@@ -233,7 +233,7 @@ class PendudukKecamatan(models.Model):
 
 
 class Kota (models.Model):
-    nama_kota = models.TextField(max_length=50)
+    nama_kota = models.CharField(max_length=50)
     inflasi = models.ForeignKey(
         Inflasi, related_name='inflasi_kota', on_delete=models.CASCADE)
     pdrb_migas = models.ForeignKey(
