@@ -242,6 +242,7 @@ class Kota (models.Model):
         Penduduk, related_name="penduduk_kota", on_delete=models.CASCADE)
     pend_kec = models.ForeignKey(
         PendudukKecamatan, related_name="penduduk_kecamatan", on_delete=models.CASCADE)
+    tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.tanggal)
