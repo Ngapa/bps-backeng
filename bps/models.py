@@ -72,6 +72,7 @@ class TenagaKerja(models.Model):
     urur_ruta = models.FloatField(null=True, blank=True)
     lainnya = models.FloatField(null=True, blank=True)
     gender = models.CharField(max_length=15, choices=CHOICES)
+    tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.tanggal)
@@ -165,6 +166,10 @@ class Penduduk(models.Model):
     def __str__(self):
         return str(self.tanggal)
 
+    class Meta:
+        verbose_name = "Penduduk"
+        verbose_name_plural = "Penduduk"
+
 
 class PendudukKecamatan(models.Model):
     KECAMATAN = [
@@ -221,6 +226,10 @@ class PendudukKecamatan(models.Model):
 
     def __str__(self):
         return str(self.tanggal)
+
+    class Meta:
+        verbose_name = "Penduduk Kecamatan"
+        verbose_name_plural = "Penduduk Kecamatan"
 
 
 class Kota (models.Model):
