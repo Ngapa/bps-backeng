@@ -99,18 +99,12 @@ class Kemiskinan(models.Model):
 
 
 class Ipm(models.Model):
-    uhh = models.DecimalField(null=True, blank=True,
-                              decimal_places=5, max_digits=5)
-    rls = models.DecimalField(null=True, blank=True,
-                              decimal_places=5, max_digits=5)
-    hls = models.DecimalField(null=True, blank=True,
-                              decimal_places=5, max_digits=5)
-    ppp = models.DecimalField(null=True, blank=True,
-                              decimal_places=5, max_digits=5)
-    ipm = models.DecimalField(null=True, blank=True,
-                              decimal_places=5, max_digits=5)
-    pertumbuhan = models.DecimalField(
-        null=True, blank=True, decimal_places=5, max_digits=5)
+    uhh = models.FloatField(null=True, blank=True)
+    rls = models.FloatField(null=True, blank=True)
+    hls = models.FloatField(null=True, blank=True)
+    ppp = models.FloatField(null=True, blank=True)
+    ipm = models.FloatField(null=True, blank=True)
+    pertumbuhan = models.FloatField(null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
