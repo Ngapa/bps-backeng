@@ -56,7 +56,7 @@ class Pdrb(models.Model):
 
     class Meta:
         verbose_name = "Produk Domestik Regional Bruto"
-        verbose_name_plural = "Produk Domestik Regional Bruto Dengan Migas"
+        verbose_name_plural = "Produk Domestik Regional Bruto"
 
 
 class TenagaKerja(models.Model):
@@ -99,12 +99,18 @@ class Kemiskinan(models.Model):
 
 
 class Ipm(models.Model):
-    uhh = models.FloatField(null=True, blank=True)
-    rls = models.FloatField(null=True, blank=True)
-    hls = models.FloatField(null=True, blank=True)
-    ppp = models.FloatField(null=True, blank=True)
-    ipm = models.FloatField(null=True, blank=True)
-    pertumbuhan = models.FloatField(null=True, blank=True)
+    uhh = models.DecimalField(null=True, blank=True,
+                              decimal_places=5, max_digits=5)
+    rls = models.DecimalField(null=True, blank=True,
+                              decimal_places=5, max_digits=5)
+    hls = models.DecimalField(null=True, blank=True,
+                              decimal_places=5, max_digits=5)
+    ppp = models.DecimalField(null=True, blank=True,
+                              decimal_places=5, max_digits=5)
+    ipm = models.DecimalField(null=True, blank=True,
+                              decimal_places=5, max_digits=5)
+    pertumbuhan = models.DecimalField(
+        null=True, blank=True, decimal_places=5, max_digits=5)
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):

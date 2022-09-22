@@ -90,7 +90,7 @@ class KemiskinanApiViews(APIView):
     def get(self, request, *args, **kwargs):
         pdrb = Kemiskinan.objects.all()
         serializer = KemiskinanSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"Kemiskinan": serializer.data}, status=status.HTTP_200_OK)
 
 
 class TenagaKerjaApiViews(APIView):
@@ -98,7 +98,7 @@ class TenagaKerjaApiViews(APIView):
     def get(self, request, *args, **kwargs):
         pdrb = TenagaKerja.objects.all()
         serializer = TenagaKerjaSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"Tenaga Kerja": serializer.data}, status=status.HTTP_200_OK)
 
 
 class IpmApiViews(APIView):
@@ -106,7 +106,7 @@ class IpmApiViews(APIView):
     def get(self, request, *args, **kwargs):
         pdrb = Ipm.objects.all()
         serializer = IpmSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"IPM": serializer.data}, status=status.HTTP_200_OK)
 
 
 class KotaApiViews(APIView):
