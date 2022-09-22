@@ -70,10 +70,10 @@ WSGI_APPLICATION = 'backend_oss.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'oss',
@@ -82,14 +82,14 @@ DATABASES = {
     #     'HOST': '127.0.0.1',
     #     'PORT': '3306',
     # }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'd8f11sufpulgg4',
-    #     'USER': 'mzvfucdkrmazai',
-    #     'PASSWORD': '1c147b226370c12220d9324e7f179e74d8691dac48c16b66a7645a58d74e8677',
-    #     'HOST': 'ec2-3-218-171-44.compute-1.amazonaws.com',
-    #     'PORT': '5432',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8f11sufpulgg4',
+        'USER': 'mzvfucdkrmazai',
+        'PASSWORD': '1c147b226370c12220d9324e7f179e74d8691dac48c16b66a7645a58d74e8677',
+        'HOST': 'ec2-3-218-171-44.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
 }
 
 REST_FRAMEWORK = {
