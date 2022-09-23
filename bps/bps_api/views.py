@@ -122,3 +122,17 @@ class KategoriViews(APIView):
         kategori = Kategori.objects.all()
         serializer = KategoriSerializers(kategori, many=True)
         return Response({'Kategori': serializer.data}, status=status.HTTP_200_OK)
+
+
+class PendudukViews(APIView):
+    def get(self, request, *args, **kwargs):
+        penduduk = Penduduk.objects.all()
+        serializer = PendudukSerializers(penduduk, many=True)
+        return Response({'Penduduk': serializer.data}, status=status.HTTP_200_OK)
+
+
+class PendudukKecamatanViews(APIView):
+    def get(self, request, *args, **kwargs):
+        penduduk = PendudukKecamatan.objects.all()
+        serializer = PendudukKecamatanSerializers(penduduk, many=True)
+        return Response({'Penduduk': serializer.data}, status=status.HTTP_200_OK)

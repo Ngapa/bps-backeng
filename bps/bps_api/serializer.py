@@ -30,7 +30,7 @@ class IpmSerializers(serializers.ModelSerializer):
     class Meta:
         model = Ipm
         fields = '__all__'
-        
+
 
 class KategoriSerializers(serializers.ModelSerializer):
     class Meta:
@@ -41,4 +41,16 @@ class KategoriSerializers(serializers.ModelSerializer):
 class KotaSerializers(serializers.ModelSerializer):
     class Meta:
         model = Kota
+        fields = '__all__'
+
+
+class PendudukSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Penduduk
+        fields = '__all__'
+
+
+class PendudukKecamatanSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = PendudukKecamatan
         fields = '__all__'

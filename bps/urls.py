@@ -21,4 +21,6 @@ urlpatterns = [
     path('ipm/', IpmApiViews.as_view()),
     path('kota/', KotaApiViews.as_view()),
     path('kategori/', KategoriViews.as_view()),
+    path('penduduk/', PendudukViews.as_view()),
+    path('pendudukkecamatan/', PendudukKecamatanViews.as_view()),
 ]
