@@ -38,49 +38,24 @@ class InflasiDodApiViews(APIView):
 class PdrbApiViews(APIView):
 
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.all()
+        pdrb = Pdrb.objects.filter(
+            kategori='4') | Pdrb.objects.filter(kategori='7')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
-class PdrbMigasApiViews(APIView):
+class DistPdrbApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='4')
+        pdrb = Pdrb.objects.filter(
+            kategori='5') | Pdrb.objects.filter(kategori='8')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
 
-class DistPdrbMigasApiViews(APIView):
+class LajuPdrbApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='5')
-        serializer = PdrbSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
-
-
-class LajuPdrbMigasApiViews(APIView):
-    def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='6')
-        serializer = PdrbSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
-
-
-class PdrbNonMigasApiViews(APIView):
-    def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='7')
-        serializer = PdrbSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
-
-
-class DistPdrbNonMigasApiViews(APIView):
-    def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='8')
-        serializer = PdrbSerializers(pdrb, many=True)
-        return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
-
-
-class LajuPdrbNonMigasApiViews(APIView):
-    def get(self, request, *args, **kwargs):
-        pdrb = Pdrb.objects.filter(kategori='9')
+        pdrb = Pdrb.objects.filter(
+            kategori='6') | Pdrb.objects.filter(kategori='7')
         serializer = PdrbSerializers(pdrb, many=True)
         return Response({"PDRB": serializer.data}, status=status.HTTP_200_OK)
 
