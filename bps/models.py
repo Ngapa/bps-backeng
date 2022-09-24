@@ -117,8 +117,9 @@ class Ipm(models.Model):
 
 class Inflasi(models.Model):
     kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE, null=True)
-    sandang = models.FloatField(null=True, blank=True)
     sembako = models.FloatField(null=True, blank=True)
+    sandang = models.FloatField(null=True, blank=True)
+    perlengkapan = models.FloatField(null=True, blank=True)
     perumahan = models.FloatField(null=True, blank=True)
     kesehatan = models.FloatField(null=True, blank=True)
     transportasi = models.FloatField(null=True, blank=True)
