@@ -68,7 +68,7 @@ class PendudukModelAdmin(ImportExportModelAdmin):
 
 @admin.register(PendudukKecamatan)
 class PendudukKecamatanModelAdmin(ImportExportModelAdmin):
-    list_display = ("tanggal", "kec", "jenis_kelamin")
+    list_display = ("tanggal", "kec")
     # list_filter = ('kecamatan')
 
     class Meta:

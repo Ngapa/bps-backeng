@@ -199,14 +199,12 @@ class PendudukKecamatan(models.Model):
         ('Cilacap Tengah', 'Cilacap Tengah'),
         ('Cilacap Utara', 'Cilacap Utara'),
     ]
-    CHOICES = [
-        ("LK", "Laki-Laki"),
-        ("PR", "Perempuan")
-    ]
     kec = models.CharField(verbose_name='Kecamatan',
                            choices=KECAMATAN, max_length=35, default='Dayeuhluhur')
-    jenis_kelamin = models.CharField(max_length=15, choices=CHOICES)
-    jumlah = models.IntegerField(null=True, blank=True)
+    lk = models.IntegerField(null=True, blank=True)
+    pr = models.IntegerField(null=True, blank=True)
+    total = models.IntegerField(null=True, blank=True)
+    rasio_jk = models.FloatField(null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
