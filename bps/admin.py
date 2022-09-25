@@ -58,8 +58,8 @@ class IpmModelAdmin(ImportExportModelAdmin):
 
 @admin.register(Penduduk)
 class PendudukModelAdmin(ImportExportModelAdmin):
-    # list_display = ("tanggal", "jenis_kelamin")
-    # list_filter = ('jenis_kelamin')
+    list_display = ("tanggal", "jenis_kelamin")
+    list_filter = ('jenis_kelamin')
 
     class Meta:
         model = Penduduk
@@ -68,8 +68,8 @@ class PendudukModelAdmin(ImportExportModelAdmin):
 
 @admin.register(PendudukKecamatan)
 class PendudukKecamatanModelAdmin(ImportExportModelAdmin):
-    # list_display = ("tanggal", "kecamatan", "jenis_kelamin")
-    # list_filter = ('kecamatan')
+    list_display = ("tanggal", "kecamatan", "jenis_kelamin")
+    list_filter = ('kecamatan')
 
     class Meta:
         model = PendudukKecamatan
