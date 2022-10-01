@@ -72,6 +72,9 @@ class TenagaKerja(models.Model):
     urur_ruta = models.FloatField(null=True, blank=True)
     lainnya = models.FloatField(null=True, blank=True)
     gender = models.CharField(max_length=15, choices=CHOICES)
+    tpak = models.FloatField(null=True, blank=True)
+    tkk = models.FloatField(null=True, blank=True)
+    tpt = models.FloatField(null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
