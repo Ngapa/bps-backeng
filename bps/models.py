@@ -267,7 +267,17 @@ class PendudukKecamatan(models.Model):
 
 
 class InflasiEnamKota (models.Model):
-    nama_kota = models.CharField(max_length=50)
+    KOTA = [
+        ("cilacap", "Cilacap"),
+        ("purwokerto", "Purwokerto"),
+        ("kudus", "Kudus"),
+        ("surakarta", "Surakarta"),
+        ("semarang", "Semarang"),
+        ("tegal", "Tegal"),
+        ("nasional", "Nasional"),
+    ]
+    nama_kota = models.CharField(
+        max_length=50, choices=KOTA, default="cilacap")
     mtom = models.FloatField(null=True, blank=True, verbose_name="M-to-M")
     ytod = models.FloatField(null=True, blank=True, verbose_name="Y-to-D")
     ytoy = models.FloatField(null=True, blank=True, verbose_name="Y-to-Y")
@@ -290,6 +300,7 @@ class Ketimpangan(models.Model):
 
     pddk = models.CharField(verbose_name="Penduduk",
                             choices=CHOICES, default="rendah", max_length=30)
+    jumlah = models.FloatField(null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
     class Meta:

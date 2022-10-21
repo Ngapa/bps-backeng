@@ -80,6 +80,9 @@ class PendudukKecamatanModelAdmin(ImportExportModelAdmin):
 
 @admin.register(InflasiEnamKota)
 class InflasiEnamKotaModelAdmin(ImportExportModelAdmin):
+    list_display = ("nama_kota", "tanggal")
+    list_filter = ('nama_kota', 'tanggal')
+
     class Meta:
         model = InflasiEnamKota
         fields = '__all__'
