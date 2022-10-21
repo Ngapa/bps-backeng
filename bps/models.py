@@ -119,20 +119,67 @@ class Ipm(models.Model):
         verbose_name_plural = "Indeks Pembangunan Manusia"
 
 
+class InflasiKlmpkPengeluaran(models.Model):
+    sembako = models.FloatField(
+        verbose_name="Makanan, Minuman, Tembakau", null=True, blank=True)
+    sandang = models.FloatField(
+        verbose_name="Pakaian dan Alas Kaki", null=True, blank=True)
+    perumahan = models.FloatField(
+        verbose_name="Perumahan, Air, Listrik, BB Lain", null=True, blank=True)
+    perlengkapan = models.FloatField(
+        verbose_name="Perlengkapan, Pemeliharaan Rutin Rumah Tangga", null=True, blank=True)
+    kesehatan = models.FloatField(
+        verbose_name="Kesehatan", null=True, blank=True)
+    transportasi = models.FloatField(
+        verbose_name="Transportasi", null=True, blank=True)
+    informasi = models.FloatField(
+        verbose_name="Informasi, Komunikasi, Keuangan", null=True, blank=True)
+    rekreasi = models.FloatField(
+        verbose_name="Rekreasi, Olahraga, Budaya", null=True, blank=True)
+    pendidikan = models.FloatField(
+        verbose_name="Pendidikan", null=True, blank=True)
+    penyedia_pangan = models.FloatField(
+        verbose_name="Penyedia Makanan Minuman / Restoran", null=True, blank=True)
+    perawatan_pribadi = models.FloatField(
+        verbose_name="Perawatan Pribadi, Jasa Lainnya", null=True, blank=True)
+    total_inflasi = models.FloatField(
+        verbose_name="Total Inflasi", null=True, blank=True)
+    tanggal = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.tanggal)
+
+    class Meta:
+        verbose_name = "Inflasi Kelompok Pengeluaran"
+        verbose_name_plural = "Inflasi Kelompok Pengeluaran"
+
+
 class Inflasi(models.Model):
     kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE, null=True)
-    sembako = models.FloatField(null=True, blank=True)
-    sandang = models.FloatField(null=True, blank=True)
-    perumahan = models.FloatField(null=True, blank=True)
-    perlengkapan = models.FloatField(null=True, blank=True)
-    kesehatan = models.FloatField(null=True, blank=True)
-    transportasi = models.FloatField(null=True, blank=True)
-    informasi = models.FloatField(null=True, blank=True)
-    rekreasi = models.FloatField(null=True, blank=True)
-    pendidikan = models.FloatField(null=True, blank=True)
-    penyedia_pangan = models.FloatField(null=True, blank=True)
-    perawatan_pribadi = models.FloatField(null=True, blank=True)
-    total_inflasi = models.FloatField(null=True, blank=True)
+    sembako = models.FloatField(
+        verbose_name="Makanan, Minuman, Tembakau", null=True, blank=True)
+    sandang = models.FloatField(
+        verbose_name="Pakaian dan Alas Kaki", null=True, blank=True)
+    perumahan = models.FloatField(
+        verbose_name="Perumahan, Air, Listrik, BB Lain", null=True, blank=True)
+    perlengkapan = models.FloatField(
+        verbose_name="Perlengkapan, Pemeliharaan Rutin Rumah Tangga", null=True, blank=True)
+    kesehatan = models.FloatField(
+        verbose_name="Kesehatan", null=True, blank=True)
+    transportasi = models.FloatField(
+        verbose_name="Transportasi", null=True, blank=True)
+    informasi = models.FloatField(
+        verbose_name="Informasi, Komunikasi, Keuangan", null=True, blank=True)
+    rekreasi = models.FloatField(
+        verbose_name="Rekreasi, Olahraga, Budaya", null=True, blank=True)
+    pendidikan = models.FloatField(
+        verbose_name="Pendidikan", null=True, blank=True)
+    penyedia_pangan = models.FloatField(
+        verbose_name="Penyedia Makanan Minuman / Restoran", null=True, blank=True)
+    perawatan_pribadi = models.FloatField(
+        verbose_name="Perawatan Pribadi, Jasa Lainnya", null=True, blank=True)
+    total_inflasi = models.FloatField(
+        verbose_name="Total Inflasi", null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
@@ -244,3 +291,6 @@ class Ketimpangan(models.Model):
     pddk = models.CharField(verbose_name="Penduduk",
                             choices=CHOICES, default="rendah", max_length=30)
     tanggal = models.DateField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Ketimpangan"

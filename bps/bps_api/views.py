@@ -35,6 +35,13 @@ class InflasiDodApiViews(APIView):
         return Response({"Inflasi Date on Date: ": serializer.data}, status=status.HTTP_200_OK)
 
 
+class InflasiPengeluaranApiViews(APIView):
+    def get(self, *args, **kwargs):
+        inflasi = InflasiKlmpkPengeluaran.objects.filter(kategori="2")
+        serializer = InflasiPengeluaranSerializers(inflasi, many=True)
+        return Response({"Inflasi: ": serializer.data}, status=status.HTTP_200_OK)
+
+
 class PdrbApiViews(APIView):
 
     def get(self, request, *args, **kwargs):

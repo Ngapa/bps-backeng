@@ -8,11 +8,13 @@ admin.site.index_title = "BPS Admin"
 admin.site.site_header = "BPS Admin"
 
 
+"""
 @admin.register(Kategori)
 class KategoriModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Kategori
         fields = '__all__'
+"""
 
 
 @admin.register(Inflasi)

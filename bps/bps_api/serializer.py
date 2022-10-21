@@ -8,6 +8,12 @@ class InflasiSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class InflasiPengeluaranSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = InflasiKlmpkPengeluaran
+        fields = '__all__'
+
+
 class PdrbSerializers(serializers.ModelSerializer):
     class Meta:
         model = Pdrb
