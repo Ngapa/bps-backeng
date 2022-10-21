@@ -84,12 +84,11 @@ class IpmApiViews(APIView):
         return Response({"IPM": serializer.data}, status=status.HTTP_200_OK)
 
 
-class KotaApiViews(APIView):
-
+class InflasiEnamKotaApiViews(APIView):
     def get(self, request, *args, **kwargs):
-        kota = Kota.objects.all()
-        serializer = KotaSerializers(kota, many=True)
-        return Response({"Kota": serializer.data}, status=status.HTTP_200_OK)
+        inflasi = InflasiEnamKota.objects.all()
+        serializer = InflasiEnamKotaSerializers(inflasi, many=True)
+        return Response({"Inflasi": serializer.data}, status=status.HTTP_200_OK)
 
 
 class KategoriViews(APIView):
@@ -97,6 +96,13 @@ class KategoriViews(APIView):
         kategori = Kategori.objects.all()
         serializer = KategoriSerializers(kategori, many=True)
         return Response({'Kategori': serializer.data}, status=status.HTTP_200_OK)
+
+
+class KetimpanganViews(APIView):
+    def get(self, request, *args, **kwargs):
+        ketimpangan = Ketimpangan.objects.all()
+        serializer = KetimpanganSerializers(ketimpangan, many=True)
+        return Response({'Ketimpangan': serializer.data}, status=status.HTTP_200_OK)
 
 
 class PendudukViews(APIView):

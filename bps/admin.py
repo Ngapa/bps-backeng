@@ -76,8 +76,15 @@ class PendudukKecamatanModelAdmin(ImportExportModelAdmin):
         fields = '__all__'
 
 
-@admin.register(Kota)
-class KotaModelAdmin(ImportExportModelAdmin):
+@admin.register(InflasiEnamKota)
+class InflasiEnamKotaModelAdmin(ImportExportModelAdmin):
     class Meta:
-        model = Kota
+        model = InflasiEnamKota
+        fields = '__all__'
+
+
+@admin.register(Ketimpangan)
+class KetimpanganModelAdmin(ImportExportModelAdmin):
+    class Meta:
+        model = Ketimpangan
         fields = '__all__'

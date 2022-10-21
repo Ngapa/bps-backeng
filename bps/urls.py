@@ -15,8 +15,9 @@ urlpatterns = [
     path('kemiskinan/', KemiskinanApiViews.as_view()),
     path('tenagakerja/', TenagaKerjaApiViews.as_view()),
     path('ipm/', IpmApiViews.as_view()),
-    path('kota/', KotaApiViews.as_view()),
+    path('inflasi_kota/', InflasiEnamKotaApiViews.as_view()),
     path('kategori/', KategoriViews.as_view()),
+    path('ketimpangan/', KetimpanganViews.as_view()),
     path('penduduk/', PendudukViews.as_view()),
     path('pendudukkecamatan/', PendudukKecamatanViews.as_view()),
 ]

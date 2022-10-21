@@ -38,15 +38,21 @@ class KategoriSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class KotaSerializers(serializers.ModelSerializer):
+class InflasiEnamKotaSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Kota
+        model = InflasiEnamKota
         fields = '__all__'
 
 
 class PendudukSerializers(serializers.ModelSerializer):
     class Meta:
         model = Penduduk
+        fields = '__all__'
+
+
+class KetimpanganSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Ketimpangan
         fields = '__all__'
 
 

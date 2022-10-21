@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 # Create your models here.
 
@@ -218,21 +219,28 @@ class PendudukKecamatan(models.Model):
         verbose_name_plural = "Penduduk Kecamatan"
 
 
-class Kota (models.Model):
+class InflasiEnamKota (models.Model):
     nama_kota = models.CharField(max_length=50)
-    inflasi = models.ForeignKey(
-        Inflasi, related_name='inflasi_kota', on_delete=models.CASCADE)
-    pdrb_migas = models.ForeignKey(
-        Pdrb, related_name='pdrb_kota', on_delete=models.CASCADE)
-    pend = models.ForeignKey(
-        Penduduk, related_name="penduduk_kota", on_delete=models.CASCADE)
-    pend_kec = models.ForeignKey(
-        PendudukKecamatan, related_name="penduduk_kecamatan", on_delete=models.CASCADE)
+    mtom = models.FloatField(null=True, blank=True, verbose_name="M-to-M")
+    ytod = models.FloatField(null=True, blank=True, verbose_name="Y-to-D")
+    ytoy = models.FloatField(null=True, blank=True, verbose_name="Y-to-Y")
     tanggal = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.tanggal)
 
     class Meta:
-        verbose_name = "Kota"
-        verbose_name_plural = "Kota"
+        verbose_name = "Inflasi Enam Kota"
+        verbose_name_plural = "Inflasi Enam Kota"
+
+
+class Ketimpangan(models.Model):
+    CHOICES = [
+        ("rendah", "Rendah"),
+        ("sedang", "Sedang"),
+        ("tinggi", "Tinggi"),
+    ]
+
+    pddk = models.CharField(verbose_name="Penduduk",
+                            choices=CHOICES, default="rendah", max_length=30)
+    tanggal = models.DateField(null=True, blank=True)
