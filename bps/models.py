@@ -303,5 +303,20 @@ class Ketimpangan(models.Model):
     jumlah = models.FloatField(null=True, blank=True)
     tanggal = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return str(self.tanggal)
+
     class Meta:
         verbose_name_plural = "Ketimpangan"
+
+
+class Pengangguran(models.Model):
+    tanggal = models.DateField()
+    tpak = models.FloatField(verbose_name="TPAK", null=True, blank=True)
+    tpt = models.FloatField(verbose_name="TPT", null=True, blank=True)
+
+    def __str__(self):
+        return str(self.tanggal)
+
+    class Meta:
+        verbose_name_plural = "Pengangguran"

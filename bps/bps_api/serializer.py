@@ -62,6 +62,12 @@ class KetimpanganSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PengangguranSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Pengangguran
+        fields = '__all__'
+
+
 class PendudukKecamatanSerializers(serializers.ModelSerializer):
     class Meta:
         model = PendudukKecamatan

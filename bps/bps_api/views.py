@@ -112,6 +112,13 @@ class KetimpanganViews(APIView):
         return Response({'Ketimpangan': serializer.data}, status=status.HTTP_200_OK)
 
 
+class PengangguranViews(APIView):
+    def get(self, request, *args, **kwargs):
+        pengangguran = Pengangguran.objects.all()
+        serializer = PengangguranSerializers(pengangguran, many=True)
+        return Response({'Ketimpangan': serializer.data}, status=status.HTTP_200_OK)
+
+
 class PendudukViews(APIView):
     def get(self, request, *args, **kwargs):
         penduduk = Penduduk.objects.all()

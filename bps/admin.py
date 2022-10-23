@@ -8,13 +8,11 @@ admin.site.index_title = "BPS Admin"
 admin.site.site_header = "BPS Admin"
 
 
-"""
 @admin.register(Kategori)
 class KategoriModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Kategori
         fields = '__all__'
-"""
 
 
 @admin.register(Inflasi)
@@ -90,6 +88,19 @@ class InflasiEnamKotaModelAdmin(ImportExportModelAdmin):
 
 @admin.register(Ketimpangan)
 class KetimpanganModelAdmin(ImportExportModelAdmin):
+    list_display = ("pddk", "tanggal")
+    list_filter = ('pddk', 'tanggal')
+
     class Meta:
         model = Ketimpangan
+        fields = '__all__'
+
+
+@admin.register(Pengangguran)
+class PengangguranModelAdmin(ImportExportModelAdmin):
+    list_display = ("tanggal", "tpak", "tpt")
+    list_filter = ('tanggal',)
+
+    class Meta:
+        model = Pengangguran
         fields = '__all__'
